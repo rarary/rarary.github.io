@@ -13,7 +13,7 @@
             --color-card-background: #FFFFFF;
             --color-text-primary: #1C2B3A; /* Dark Grey/Blue */
             --color-text-secondary: #6A7B8E; /* Medium Grey */
-            --color-accent: #004D99; /* Deep Ocean Blue (New Accent Color for UMT theme) */
+            --color-accent: #004D99; /* Deep Ocean Blue (UMT theme) */
             --color-border: #E0E4E8;
 
             /* Spacing */
@@ -73,13 +73,35 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Helps content distribution */
-            overflow: hidden; /* For rounded corners on content */
+            justify-content: space-between;
+            overflow: hidden;
         }
 
+	/* Inside your <style> block, under the general Card Styling section */
+
+/* --- NEW STYLES FOR PROFILE CARD BACKGROUND --- */
+.card-1 {
+    /* 1. Set the image source (make sure bg.jpg is in the same folder as your HTML) */
+    background-image: url('download.jpg'); 
+    
+    /* 2. Scale the image so it covers the entire card area */
+    background-size: cover; 
+    
+    /* 3. Center the image within the card */
+    background-position: center; 
+    
+    /* 4. Prevent the image from tiling/repeating */
+    background-repeat: no-repeat;
+    
+    /* OPTIONAL: Remove the default white background for this card */
+    background-color: transparent; 
+}
+/* --- END NEW STYLES --- */
+
+        /* Theme Tweak: Subtle Hover Effect (3) */
         .bento-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px) scale(1.01); /* Added scale for zoom effect */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); 
         }
 
         .card-header {
@@ -100,11 +122,10 @@
             margin-bottom: 0.25rem;
         }
         
-        /* New Tagline Style */
         .tagline {
             font-size: 1.1rem;
             font-weight: 600;
-            color: var(--color-accent); /* Use accent color for tagline emphasis */
+            color: var(--color-accent);
             margin-bottom: 0.5rem;
         }
 
@@ -114,6 +135,7 @@
             color: var(--color-text-primary);
         }
 
+        /* Updated Social Links */
         .social-links a {
             color: var(--color-accent);
             text-decoration: none;
@@ -142,7 +164,7 @@
         }
 
         .tech-stack-list li {
-            background-color: #E6F0FF; /* Lighter accent background (Pale Blue) */
+            background-color: #E6F0FF; 
             color: var(--color-accent);
             padding: 0.4rem 0.8rem;
             border-radius: 6px;
@@ -150,76 +172,65 @@
             font-weight: 600;
         }
 
-        .case-study h3 {
+        .case-study h3, .reflection-card h3 {
             font-size: 1.3rem;
             color: var(--color-text-primary);
         }
 
-        .case-study p {
+        .case-study p, .reflection-card p {
             margin-top: 0.5rem;
             font-size: 1rem;
         }
 
-        /* Desktop Layout (Grid) */
+        /* Desktop Layout (Grid) - Adjusted for Card 7 (2) */
         @media (min-width: 768px) {
             .bento-grid-container {
-                grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
-                grid-template-rows: auto auto; /* Two main rows */
+                grid-template-columns: repeat(4, 1fr); 
+                grid-template-rows: auto auto auto; 
             }
 
-            /* Card 1 (Profile): Large box (2x2) */
             .card-1 {
                 grid-column: span 2;
                 grid-row: span 2;
             }
 
-            /* Card 2 (Location): Small box (1x1) */
             .card-2 {
-                grid-column: span 1;
-                grid-row: span 1;
+                grid-column: 3 / 4; 
+                grid-row: 1 / 2;
             }
 
-            /* Card 3 (Tech Stack): Medium box (1x1) */
             .card-3 {
-                grid-column: span 1;
-                grid-row: span 1;
+                grid-column: 4 / 5; 
+                grid-row: 1 / 2;
             }
 
-            /* Card 4 (Case Study): Medium box (2x1) */
-            .card-4 {
-                grid-column: span 2;
-                grid-row: span 1;
+            /* Card 7 (Reflection) - New Card (2) */
+            .card-7 {
+                grid-column: 3 / 4; 
+                grid-row: 2 / 3;
             }
 
-            /* Card 5 (Hobby): Small box (1x1) */
+            /* Card 5 (Hobby) - Next to Card 7 (2) */
             .card-5 {
-                grid-column: 4 / 5; /* Column 4 */
-                grid-row: 2 / 3; /* Row 2 */
+                grid-column: 4 / 5; 
+                grid-row: 2 / 3;
             }
 
-            /* Card 6 (Playlist): Wide box (4x1) */
+            .card-4 {
+                grid-column: 1 / 3; 
+                grid-row: 3 / 4;
+            }
+            
             .card-6 {
-                grid-column: 1 / 5; /* Spans all 4 columns */
-                grid-row: 3 / 4; /* Below the main 2x4 block */
+                grid-column: 3 / 5; 
+                grid-row: 3 / 4;
             }
         }
 
         /* Mobile Layout (Stacked/Flow) */
         @media (max-width: 767px) {
             .bento-grid-container {
-                grid-template-columns: 1fr; /* Single column on mobile */
-            }
-            
-            .bento-card {
-                width: 100%;
-            }
-
-            .profile-details h1 {
-                font-size: 1.8rem;
-            }
-
-            .location-card .time {
-                font-size: 1.8rem;
+                grid-template-columns: 1fr; 
             }
         }
 
@@ -241,7 +252,7 @@
             </div>
             <div class="social-links">
                 <a href="#" target="_blank">LinkedIn</a>
-                <a href="#" target="_blank">GitHub</a>
+                <a href="https://github.com/rarary" target="_blank">GitHub</a>
                 <a href="#" target="_blank">UMT Portal</a>
             </div>
         </div>
@@ -253,7 +264,7 @@
             <div>
                 <h2>UMT, Kuala Nerus</h2>
                 <p>Kuala Terengganu, MY</p>
-                <div class="time" id="current-time">10:02 AM</div>
+                <div class="time" id="current-time">11:14 AM</div>
             </div>
         </div>
 
@@ -272,16 +283,16 @@
             </ul>
         </div>
 
-        <div class="bento-card card-4 case-study">
+        <div class="bento-card card-7 reflection-card">
             <div class="card-header">
-                <span class="card-title">Recent Research Focus</span>
+                <span class="card-title">Research Vision</span>
             </div>
             <div>
-                <h3>Improving Soil Fertility</h3>
-                <p>Improving Through Organic Amendments in Small-Scale Farming.</p>
+                <h3>Why Soil Science Matters in Malaysia</h3>
+                <p>Sustainable soil security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition.</p>
             </div>
         </div>
-
+        
         <div class="bento-card card-5">
             <div class="card-header">
                 <span class="card-title">Hobby & Wellness</span>
@@ -289,6 +300,16 @@
             <div>
                 <h2>Evening walks at Pantai UMT</h2>
                 <p>A great way to relax and appreciate the coastal environment.</p>
+            </div>
+        </div>
+
+        <div class="bento-card card-4 case-study">
+            <div class="card-header">
+                <span class="card-title">Recent Research Focus</span>
+            </div>
+            <div>
+                <h3>Improving Soil Fertility</h3>
+                <p>Improving Through Organic Amendments in Small-Scale Farming.</p>
             </div>
         </div>
 
@@ -308,7 +329,7 @@
     <script>
         // Simple script to update time for Card 2
         function updateTime() {
-            // Get current time in the local timezone (Kuala Terengganu)
+            // Get current time in Kuala Terengganu (+08)
             const now = new Date();
             const timeString = now.toLocaleTimeString('en-MY', { 
                 hour: '2-digit', 
