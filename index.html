@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nur Shafiera - Student Bento Grid Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset and Global Styles */
+        :root {
+            /* Colors */
+            --color-background: #F4F6F8; /* Soft White/Light Grey */
+            --color-card-background: #FFFFFF;
+            --color-text-primary: #1C2B3A; /* Dark Grey/Blue */
+            --color-text-secondary: #6A7B8E; /* Medium Grey */
+            --color-accent: #004D99; /* Deep Ocean Blue (New Accent Color for UMT theme) */
+            --color-border: #E0E4E8;
+
+            /* Spacing */
+            --spacing-unit: 1rem;
+            --spacing-padding: 1.5rem;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: var(--spacing-unit);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-text-primary);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* Bento Grid Layout */
+        .bento-grid-container {
+            display: grid;
+            gap: var(--spacing-unit);
+            max-width: 1200px; /* Max width for desktop */
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* Card Styling */
+        .bento-card {
+            background-color: var(--color-card-background);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: var(--spacing-padding);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Helps content distribution */
+            overflow: hidden; /* For rounded corners on content */
+        }
+
+        .bento-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Specific Content Styling */
+        .profile-details h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        /* New Tagline Style */
+        .tagline {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-accent); /* Use accent color for tagline emphasis */
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-details p {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--color-text-primary);
+        }
+
+        .social-links a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 1rem;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--color-text-primary);
+        }
+
+        .location-card .time {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-top: 0.5rem;
+        }
+
+        .tech-stack-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-stack-list li {
+            background-color: #E6F0FF; /* Lighter accent background (Pale Blue) */
+            color: var(--color-accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .case-study h3 {
+            font-size: 1.3rem;
+            color: var(--color-text-primary);
+        }
+
+        .case-study p {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* Desktop Layout (Grid) */
+        @media (min-width: 768px) {
+            .bento-grid-container {
+                grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
+                grid-template-rows: auto auto; /* Two main rows */
+            }
+
+            /* Card 1 (Profile): Large box (2x2) */
+            .card-1 {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+
+            /* Card 2 (Location): Small box (1x1) */
+            .card-2 {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            /* Card 3 (Tech Stack): Medium box (1x1) */
+            .card-3 {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            /* Card 4 (Case Study): Medium box (2x1) */
+            .card-4 {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            /* Card 5 (Hobby): Small box (1x1) */
+            .card-5 {
+                grid-column: 4 / 5; /* Column 4 */
+                grid-row: 2 / 3; /* Row 2 */
+            }
+
+            /* Card 6 (Playlist): Wide box (4x1) */
+            .card-6 {
+                grid-column: 1 / 5; /* Spans all 4 columns */
+                grid-row: 3 / 4; /* Below the main 2x4 block */
+            }
+        }
+
+        /* Mobile Layout (Stacked/Flow) */
+        @media (max-width: 767px) {
+            .bento-grid-container {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
+            
+            .bento-card {
+                width: 100%;
+            }
+
+            .profile-details h1 {
+                font-size: 1.8rem;
+            }
+
+            .location-card .time {
+                font-size: 1.8rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bento-grid-container">
+
+        <div class="bento-card card-1">
+            <div class="card-header">
+                <span class="card-title">Profile & Info</span>
+            </div>
+            <div class="profile-details">
+                <h1>NUR SHAFIERA BINTI SOBRI</h1>
+                <p class="tagline">'Where Innovation Meets Cultivation.'</p>
+                <p>Crop Science Student</p>
+                <p>Year 1</p>
+            </div>
+            <div class="social-links">
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">GitHub</a>
+                <a href="#" target="_blank">UMT Portal</a>
+            </div>
+        </div>
+
+        <div class="bento-card card-2 location-card">
+            <div class="card-header">
+                <span class="card-title">Location</span>
+            </div>
+            <div>
+                <h2>UMT, Kuala Nerus</h2>
+                <p>Kuala Terengganu, MY</p>
+                <div class="time" id="current-time">10:02 AM</div>
+            </div>
+        </div>
+
+        <div class="bento-card card-3">
+            <div class="card-header">
+                <span class="card-title">Current Subjects</span>
+            </div>
+            <ul class="tech-stack-list">
+                <li>Fundamentals of Soil Science</li>
+                <li>Microbiology</li>
+                <li>Excel</li>
+                <li>Fundamentals of Entrepreneurship</li>
+                <li>Ethics and Civilization</li>
+                <li>Philosophy and Current Issues</li>
+                <li>Integrity and Anti-Corruption</li>
+            </ul>
+        </div>
+
+        <div class="bento-card card-4 case-study">
+            <div class="card-header">
+                <span class="card-title">Recent Research Focus</span>
+            </div>
+            <div>
+                <h3>Improving Soil Fertility</h3>
+                <p>Improving Through Organic Amendments in Small-Scale Farming.</p>
+            </div>
+        </div>
+
+        <div class="bento-card card-5">
+            <div class="card-header">
+                <span class="card-title">Hobby & Wellness</span>
+            </div>
+            <div>
+                <h2>Evening walks at Pantai UMT</h2>
+                <p>A great way to relax and appreciate the coastal environment.</p>
+            </div>
+        </div>
+
+        <div class="bento-card card-6 playlist-card">
+            <div class="card-header">
+                <span class="card-title">Study Playlist</span>
+            </div>
+            <div>
+                <h2>Deep Focus Mix (Instrumental)</h2>
+                <p>Placeholder for an embedded music player (Spotify/YouTube Music widget).</p>
+                <p style="margin-top: 10px;">🌊 Now playing: "Ocean Blue Waves"</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Simple script to update time for Card 2
+        function updateTime() {
+            // Get current time in the local timezone (Kuala Terengganu)
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-MY', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                hour12: true // Ensure AM/PM is used
+            });
+            document.getElementById('current-time').textContent = timeString;
+        }
+
+        // Update time immediately and then every minute
+        updateTime();
+        setInterval(updateTime, 60000); 
+    </script>
+
+</body>
+</html>
